@@ -3,17 +3,13 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import fs from 'fs'
 
-// Decode Google Cloud JSON Key (only if it exists)
-if (process.env.GOOGLE_CLOUD_KEY_BASE64) {
-    const decoded = Buffer.from(process.env.GOOGLE_CLOUD_KEY_BASE64, 'base64').toString('utf-8');
-    fs.writeFileSync("gcp-key.json", decoded);
-}
+
 
 
 const app = express();
 //app.use  is middleware by  app.use(cors()) cors is  confug but  for better use
 app.use(cors({
-    origin: process.env.CORS_ORIGN,
+    origin: true,
     credentials: true
 }))
 
